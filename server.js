@@ -42,6 +42,11 @@ app.get("/users", (req, res) => {
     res.json(rows);
   });
 });
+app.get("/", (req, res) => {
+  res.send("서버 연결 성공!");
+});
+
 
 app.listen(3000, () => console.log("서버 실행 중"));
+
 
