@@ -39,7 +39,7 @@
                 const userid = document.getElementById("userid").value;
                 const password = document.getElementById("password").value;
 
-                fetch("http://localhost:3000/signin", {
+                fetch("http://localhost:3000/users", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({ username, userbirth, userid, password })
@@ -50,4 +50,5 @@
             });
         </script>
     </body>
+
 </html>
