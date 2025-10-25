@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <nav>
+            <ul>
+                <li><img id="change" src="logo_1.png"></li>
+                <li><a href="index.html">홈</a></li>
+                <li><a href="#">충전</a></li>
+                <li><a href="#">게임하기</a></li>
+                <li><a href="#">문의하기</a></li>
+            </ul>
+        </nav>
+
+        <p>
+            <a href="login.html" style="color: white;">로그인</a>
+            |
+            <a href="signin.html" style="color: white;">회원가입</a>
+        </p>
+
+        <script>
+            const images = ["logo_1.png", "logo_2.png"];
+            let index = 0;
+
+            setInterval(() => {
+            index = (index + 1) % images.length;
+            document.getElementById("change").src = images[index];
+            }, 500);
+        </script>
+    </body>
+</html>

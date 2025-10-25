@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <link rel="stylesheet" href="login.css">
+    </head>
+    <body>
+        <nav>
+            <ul>
+                <li><img id="change" src="logo_1.png"></li>
+                <li><a href="index.html">홈</a></li>
+                <li><a href="#">충전</a></li>
+                <li><a href="#">게임하기</a></li>
+                <li><a href="#">문의하기</a></li>
+            </ul>
+        </nav>
+
+        <form class="loginbox">
+            <h1>회원가입</h1>
+            <input type="text" id="username" placeholder="이름" required><br>
+            <input type="text" id="userbirth" placeholder="생년월일(YYYY/MM/DD)" required><br>
+            <input type="text" id="userid" placeholder="아이디" required><br>
+            <input type="password" id="password" placeholder="비밀번호" required><br>
+            <button type="submit" class="loginbutton">가입하기</button>
+        </form>
+
+        <script>
+            const images = ["logo_1.png", "logo_2.png"];
+            let index = 0;
+
+            setInterval(() => {
+            index = (index + 1) % images.length;
+            document.getElementById("change").src = images[index];
+            }, 500);
+
+            document.querySelector(".loginbox").addEventListener("submit", function(e) {e.preventDefault();
+
+                const username = document.getElementById("username").value;
+                const userbirth = document.getElementById("userbirth").value;
+                const userid = document.getElementById("userid").value;
+                const password = document.getElementById("password").value;
+
+                fetch("http://localhost:3000/signin", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ username, userbirth, userid, password })
+                })
+                .then(res => res.text())
+                .then(msg => alert(msg))
+                .catch(err => alert("서버 연결 실패: " + err));
+            });
+        </script>
+    </body>
+</html>
