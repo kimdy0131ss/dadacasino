@@ -3,6 +3,7 @@ const sqlite3 = require("sqlite3").verbose();
 const bodyParser = require("body-parser");
 
 const app = express();
+const PORT = process.env.PORT || 3000;
 const db = new sqlite3.Database("users.db");
 
 // CORS 설정
@@ -46,7 +47,7 @@ app.get("/", (req, res) => {
   res.send("서버 연결 성공!");
 });
 
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 
-app.listen(3000, () => console.log("서버 실행 중"));
 
 
