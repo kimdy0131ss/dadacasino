@@ -36,4 +36,12 @@ app.post("/signin", (req, res) => {
     });
 });
 
+app.get("/users", (req, res) => {
+  db.all("SELECT * FROM users", [], (err, rows) => {
+    if (err) return res.status(500).send("회원정보 조회 실패");
+    res.json(rows);
+  });
+});
+
 app.listen(3000, () => console.log("서버 실행 중"));
+
