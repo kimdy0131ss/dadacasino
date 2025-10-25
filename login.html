@@ -25,14 +25,36 @@
         </form>
 
         <script>
-            const images = ["logo_1.png", "logo_2.png"];
-            let index = 0;
+            const img = ["logo_1.png", "logo_2.png"];
+            let i = 0;
 
             setInterval(() => {
-            index = (index + 1) % images.length;
-            document.getElementById("change").src = images[index];
+            i = (i + 1) % img.length;
+            document.getElementById("change").src = img[i];
             }, 500);
+
+            document.querySelector(".loginbox").addEventListener("submit", async function(e) {
+                e.preventDefault();
+
+                const inputs = document.querySelectorAll(".loginbox input");
+                const userid = inputs[0].value;
+                const password = inputs[1].value;
+
+                const res = await fetch("https://dadacasino.onrender.com/login", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ userid, password })
+                });
+
+                const msg = await res.text();
+                alert(msg);
+
+                if (msg === "로그인 성공!") {
+                    window.location.href = "main.html";
+                }
+            });
         </script>
     </body>
 
 </html>
+
