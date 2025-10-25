@@ -37,6 +37,19 @@ app.post("/signin", (req, res) => {
     });
 });
 
+app.post("/login", (req, res) => {
+  const { userid, password } = req.body;
+
+  db.get("SELECT * FROM users WHERE userid = ?", [userid], (err, user) => {
+    if (err) return res.status(500).send("서버 오류");
+    if (!user) return res.status(404).send("존재하지 않는 아이디입니다");
+    if (user.password !== password) return res.status(401).send("비밀번호가 틀렸습니다");
+
+    res.send("로그인 성공!");
+  });
+});
+
+
 app.get("/users", (req, res) => {
   db.all("SELECT * FROM users", [], (err, rows) => {
     if (err) return res.status(500).send("회원정보 조회 실패");
@@ -48,6 +61,7 @@ app.get("/", (req, res) => {
 });
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+
 
 
 
