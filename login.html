@@ -40,7 +40,7 @@
                 const userid = document.getElementById("userid").value;
                 const password = document.getElementById("password").value;
 
-                const res = await fetch("https://dadacasino.onrender.com/myapp/login", {
+                const res = await fetch("https://dadacasino-server.onrender.com/login", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({ userid, password })
@@ -57,6 +57,7 @@
     </body>
 
 </html>
+
 
 
 
