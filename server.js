@@ -40,6 +40,7 @@ app.post("/signin", (req, res) => {
 });
 
 app.post("/login", (req, res) => {
+  console.log("testing");
   const { userid, password } = req.body;
 
   db.get("SELECT * FROM users WHERE userid = ?", [userid], (err, user) => {
@@ -63,6 +64,7 @@ app.get("/", (req, res) => {
 });
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+
 
 
 
