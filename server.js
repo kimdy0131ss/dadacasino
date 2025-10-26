@@ -21,6 +21,7 @@ app.use((req, res, next) => {
 });
 
 app.use(bodyParser.json());
+app.use(express.static(path.join(__dirname, "public")));
 
 db.run(`CREATE TABLE IF NOT EXISTS users (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -64,6 +65,7 @@ app.get("/", (req, res) => {
 });
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+
 
 
 
