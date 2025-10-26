@@ -5,6 +5,8 @@ const bodyParser = require("body-parser");
 const app = express();
 const PORT = process.env.PORT || 3000;
 const db = new sqlite3.Database("users.db");
+app.use(bodyParser.urlencoded({ extended: true })); // form submit용
+app.use(bodyParser.json()); // JSON용
 
 // CORS 설정
 app.use((req, res, next) => {
@@ -61,6 +63,7 @@ app.get("/", (req, res) => {
 });
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+
 
 
 
