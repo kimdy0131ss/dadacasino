@@ -2,6 +2,17 @@
 <html lang="ko">
     <head>
         <link rel="stylesheet" href="style.css">
+        <script>
+            fetch("https://dadacasino-server.onrender.com/login-check", {
+                credentials: "include"
+            })
+            .then(res => {
+                if (res.status === 403) {
+                    alert("로그인이 필요한 서비스입니다.");
+                    window.location.href = "/login.html";
+                }
+            });
+        </script>
     </head>
     <body>
         <nav>
@@ -28,16 +39,6 @@
         </div>
 
         <script>
-            fetch("https://dadacasino-server.onrender.com/login-check", {
-                credentials: "include"
-            })
-            .then(res => {
-                if (res.status === 403) {
-                    alert("로그인이 필요한 서비스입니다.");
-                    window.location.href = "/login.html";
-                }
-            });
-            
             const images = ["logo_1.png", "logo_2.png"];
             let index = 0;
 
