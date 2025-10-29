@@ -21,6 +21,10 @@
         </p>
 
         <script>
+            fetch("https://dadacasino-server.onrender.com/ping")
+                .then(() => console.log("서버 깨움"))
+                .catch(() => console.log("계속 쳐잠"));
+
             const images = ["logo_1.png", "logo_2.png"];
             let index = 0;
 
@@ -30,5 +34,4 @@
             }, 500);
         </script>
     </body>
-
 </html>
